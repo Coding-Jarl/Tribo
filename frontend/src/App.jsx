@@ -1,4 +1,6 @@
 import GameCard from "@components/GameCard";
+import { SandBox, Home } from "@pages";
+import { Route, Switch } from "react-router-dom";
 
 const gameData = {
   url: "https://api.geekdo.com/xmlapi2/thing?id=1",
@@ -44,6 +46,14 @@ export default function App() {
   return (
     <>
       Tribo!
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="/lab">
+          <SandBox />
+        </Route>
+      </Switch>
       <GameCard data={gameData} />
     </>
   );

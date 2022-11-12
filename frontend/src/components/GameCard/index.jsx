@@ -80,5 +80,3 @@ GameCard.propTypes = {
     min_age: propTypes.number,
   }).isRequired,
 };
-
-//  https://api.boardgameatlas.com/api/game/images?limit=20&game_id=&client_id=ptNNRPZ1cu

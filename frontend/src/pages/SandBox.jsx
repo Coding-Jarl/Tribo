@@ -295,6 +295,13 @@ const gameData = {
 };
 
 export default function SandBox() {
+  const sandboxStyles = {
+    display: "flex",
+    flexFlow: "row wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "1rem",
+  };
   return (
     <>
       <p>Composants développés en isolation</p>
@@ -303,25 +310,9 @@ export default function SandBox() {
         que via son url
       </p>
 
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
-      <GameCard data={gameData} />
+      <div style={sandboxStyles}>
+        <GameCard data={gameData} />
+      </div>
     </>
   );
 }

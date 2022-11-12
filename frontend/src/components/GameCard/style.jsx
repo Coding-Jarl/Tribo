@@ -4,7 +4,6 @@ export default styled.article`
   position: relative;
   width: 15rem;
   aspect-ratio: 2.5;
-  margin: 4rem;
 
   // Open Card
   & > main {
@@ -15,8 +14,10 @@ export default styled.article`
     top: 0;
     width: 125%;
     aspect-ratio: 3/4;
+    overflow: hidden;
     background-color: rgba(235, 235, 235, 1);
     border: 1px solid rgba(200, 200, 200, 0.75);
+    border-radius: 0.75rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 

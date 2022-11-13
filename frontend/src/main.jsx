@@ -1,12 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import App from "./App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "reset-css";
+import { Home, SandBox } from "@pages";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/sbox",
+    element: <SandBox />,
+  },
+]);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

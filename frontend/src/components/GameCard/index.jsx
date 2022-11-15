@@ -1,5 +1,6 @@
 import { useState } from "react";
 import propTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { GiBabyFace, GiEmptyHourglass } from "react-icons/gi";
 import { BsPeopleFill, BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { BiDetail } from "react-icons/bi";
@@ -7,12 +8,16 @@ import Styled from "./style";
 
 export default function GameCard({ data }) {
   const [active, setActive] = useState(false);
+  const navigate = useNavigate();
 
   const hActivate = () => {
     setActive(true);
   };
   const hDesactivate = () => {
     setActive(false);
+  };
+  const hClickDetail = () => {
+    navigate(`/games/${data.id}`);
   };
 
   return (
@@ -26,7 +31,7 @@ export default function GameCard({ data }) {
           <div className="actions">
             <ul>
               <li>
-                <button type="button">
+                <button type="button" onClick={hClickDetail}>
                   <BiDetail />
                 </button>
               </li>
@@ -70,6 +75,7 @@ export default function GameCard({ data }) {
 
 GameCard.propTypes = {
   data: propTypes.shape({
+    id: propTypes.number,
     name: propTypes.string,
     description_preview: propTypes.string,
     images: propTypes.shape({ large: propTypes.string }),

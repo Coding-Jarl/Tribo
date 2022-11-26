@@ -1,13 +1,23 @@
 import styled from "styled-components";
 
 export default styled.header`
+  @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+  p {
+    font-family: "Permanent Marker";
+    font-size: 2rem;
+  }
+
   grid-area: topbar;
 
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding: 2rem;
   align-items: center;
+
+  & > * {
+    margin: 1rem;
+  }
 
   input {
     border-radius: 1rem;

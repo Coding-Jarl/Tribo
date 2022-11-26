@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export default styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+  font-family: "Roboto", sans-serif;
+
   min-height: 100vh;
   background: rgb(45, 32, 11);
   background: radial-gradient(

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default styled.article`
   position: relative;
-  width: 15rem;
+  width: 16rem;
   aspect-ratio: 2.5;
 
   // Open Card
@@ -72,13 +72,13 @@ export default styled.article`
     background-image: linear-gradient(
         0deg,
         rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0) 25%,
-        rgba(0, 0, 0, 0) 75%,
+        rgba(0, 0, 0, 0) 50%,
         rgba(0, 0, 0, 0.7) 100%
       ),
       url("${(props) => props.thumbUrl}");
     background-size: cover;
     background-position: center;
+    filter: sepia(50%);
 
     h2 {
       color: white;

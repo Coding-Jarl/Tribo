@@ -5,6 +5,10 @@ import Styled from "./style";
 export default function Gallery({ elements }) {
   return (
     <Styled>
+      <li className="filter">
+        <p>Filtrer cette liste:</p>
+        <input type="text" />
+      </li>
       {elements.map((game) => {
         return (
           <li>

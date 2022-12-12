@@ -3,7 +3,7 @@ import Navbar from "@components/Navbar";
 import Content from "@components/Content";
 import { Routes, Route } from "react-router-dom";
 import Styled from "./style";
-import { Home } from "./pages";
+import { Home, SandBox } from "./pages";
 
 export default function App() {
   return (
@@ -12,6 +12,7 @@ export default function App() {
       <Content>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/lab" element={<SandBox />} />
         </Routes>
       </Content>
       <Navbar />

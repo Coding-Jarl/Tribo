@@ -1,24 +1,181 @@
-import Gallery from "@components/Gallery";
+import { Swiper, SwiperSlide } from "swiper/react";
+// eslint-disable-next-line import/no-unresolved
+import "swiper/css";
+import "./style.css";
+import { Link } from "react-router-dom";
+
+const slides = [
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+  {
+    id: 1,
+    title: "Hey!",
+    linkDestination: "/",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum vel minus dolore libero illum a nulla alias iusto incidunt tenetur consequatur itaque labore inventore, tempora fugit iure quisquam! Exercitationem!",
+  },
+];
 
 export default function SandBox() {
-  const sandboxStyles = {
-    display: "flex",
-    flexFlow: "row wrap",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "1rem",
-  };
   return (
-    <>
-      <p>Composants développés en isolation</p>
-      <p>
-        Aucun lien du site officiel ne mène à cette page, elle n'est accessible
-        que via son url
-      </p>
-
-      <div style={sandboxStyles}>
-        <Gallery />
-      </div>
-    </>
+    <Swiper className="myCarousel">
+      {slides.map((slide) => {
+        return (
+          <SwiperSlide className="mySlide" key={slide.id}>
+            <Link to={slide.linkDestination}>
+              <div className="content">
+                <h2>{slide.title}</h2>
+                <p>{slide.content}</p>
+              </div>
+            </Link>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 }

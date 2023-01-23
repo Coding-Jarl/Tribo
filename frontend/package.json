@@ -18,7 +18,8 @@
     "react-router-dom": "^6.4.3",
     "react-tabs": "^5.1.0",
     "reset-css": "^5.0.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "swiper": "^8.4.5"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",

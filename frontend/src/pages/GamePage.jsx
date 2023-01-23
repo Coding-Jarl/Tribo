@@ -12,11 +12,9 @@ export default function GamePage() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.boardgameatlas.com/api/search?ids=${id}&pretty=true&client_id=JLBr5npPhV`
-      )
+      .get(`${import.meta.env.VITE_BACKEND_URL}/boardgames/${id}`)
       .then(({ data }) => {
-        setGame(data.games[0]);
+        setGame(data);
       });
   }, []);
 
@@ -48,17 +46,17 @@ export default function GamePage() {
               </TabPanel>
               <TabPanel>
                 <h2>Editeurs</h2>
-                {game.publishers.map((publisher) => publisher.id)}
-                <h2>Createurs</h2>
-                {game.designers.map((designer) => designer.id)}
+                {game.creators.publishers.join(", ")}
+                <h2>Designers</h2>
+                {game.creators.designers.join(", ")}
                 <h2>Developpeurs</h2>
-                {game.publishers.map((developer) => developer.id)}
+                {game.creators.developers.join(", ")}
                 <h2>Artistes</h2>
-                {game.artists.join(", ")}
+                {game.creators.artists.join(", ")}
               </TabPanel>
               <TabPanel>
                 <h2>Où acheter</h2>
-                {game.sku_objects.map((sku) => sku.name)}
+                {/* {game.sku_objects.map((sku) => sku.name)} */}
               </TabPanel>
             </Tabs>
           </>

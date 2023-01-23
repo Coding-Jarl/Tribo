@@ -21,7 +21,7 @@ export default function GameCard({ data }) {
   };
 
   return (
-    <Styled thumbUrl={data.images.large} className={active ? "active" : ""}>
+    <Styled thumbUrl={data.imgUrl} className={active ? "active" : ""}>
       <aside onPointerEnter={hActivate}>
         <h2>{data.name}</h2>
       </aside>
@@ -78,7 +78,7 @@ GameCard.propTypes = {
     id: propTypes.number,
     name: propTypes.string,
     description_preview: propTypes.string,
-    images: propTypes.shape({ large: propTypes.string }),
+    imgUrl: propTypes.string,
     min_players: propTypes.number,
     max_players: propTypes.number,
     min_playtime: propTypes.number,

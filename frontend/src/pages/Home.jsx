@@ -8,13 +8,9 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.boardgameatlas.com/api/search?name=${needle}&pretty=true&client_id=${
-          import.meta.env.VITE_API_ATLAS_KEY
-        }`
-      )
+      .get(`${import.meta.env.VITE_BACKEND_URL}/boardgames`)
       .then(({ data }) => {
-        setGames(data.games);
+        setGames(data);
       });
   }, [needle]);
 

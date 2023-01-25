@@ -24,13 +24,17 @@ export default styled.div`
 
   aside {
     width: 32%;
+    background-color: white;
+    color: black;
 
     .picture {
       width: 90%;
+      margin: auto;
       aspect-ratio: 1;
       background-image: url("${(props) => props.thumbUrl}");
-      background-size: cover;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
     }
   }
 `;

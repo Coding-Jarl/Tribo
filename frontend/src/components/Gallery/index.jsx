@@ -1,21 +1,37 @@
-import GameCard from "@components/GameCard";
+import { useState } from "react";
 import propTypes from "prop-types";
+import GameCard from "@components/GameCard";
 import Styled from "./style";
 
 export default function Gallery({ elements }) {
+  const [filter, setFilter] = useState("");
+
+  const hChangeFilter = (evt) => {
+    setFilter(evt.target.value);
+  };
+
   return (
     <Styled>
       <li className="filter">
         <p>Filtrer cette liste:</p>
-        <input type="text" />
+        <input
+          type="search"
+          name="needle"
+          value={filter}
+          onChange={hChangeFilter}
+        />
       </li>
-      {elements.map((game) => {
-        return (
-          <li key={game.id}>
-            <GameCard data={game} />
-          </li>
-        );
-      })}
+      {elements
+        .filter((game) =>
+          game.name.toLowerCase().includes(filter.toLowerCase())
+        )
+        .map((game) => {
+          return (
+            <li key={game.id}>
+              <GameCard data={game} />
+            </li>
+          );
+        })}
     </Styled>
   );
 }

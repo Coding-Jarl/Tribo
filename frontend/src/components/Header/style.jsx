@@ -23,14 +23,20 @@ export default styled.header`
     position: relative;
   }
   .searchbar > input {
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     border: 1px solid rgba(40, 40, 40, 1);
     background-color: rgba(40, 40, 40, 0.6);
-    color: rgba(200, 200, 200, 1);
     padding-left: 1rem;
+
+    &.open {
+      background-color: white;
+      color: black;
+      border-radius: 0.5rem 0.5rem 0rem 0rem;
+      border: 0;
+    }
   }
   .searchbar > ul {
-    background-color: yellowgreen;
+    background-color: white;
     color: black;
     position: absolute;
     width: 100%;
@@ -44,6 +50,16 @@ export default styled.header`
         display: flex;
         flex-flow: row nowrap;
         font-family: inherit;
+        color: black;
+        text-decoration: none;
+
+        p {
+          width: 80%;
+
+          display: flex;
+          align-items: center;
+          padding-left: 1rem;
+        }
 
         img {
           width: 20%;

@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import axios from "axios";
-import { GiBabyFace, GiEmptyHourglass } from "react-icons/gi";
 import { BsPeopleFill, BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import { GiBabyFace, GiEmptyHourglass } from "react-icons/gi";
+import useApi from "@services/useApi";
 import Styled from "./style";
 
 export default function GamePage() {
   const [game, setGame] = useState({});
   const { id } = useParams();
+  const api = useApi();
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/boardgames/${id}`)
-      .then(({ data }) => {
-        setGame(data);
-      });
+    api.get(`/boardgames/${id}`).then(({ data }) => {
+      setGame(data);
+    });
   }, []);
 
   return (
-    <Styled thumbUrl={game?.images?.large}>
+    <Styled thumbUrl={game?.imgUrl}>
       <main>
         {game.name && (
           <>
@@ -34,7 +33,7 @@ export default function GamePage() {
               </TabList>
               <TabPanel>
                 <h2>Description</h2>
-                <p>{game.description_preview}</p>
+                <p dangerouslySetInnerHTML={{ __html: game.description }} />
               </TabPanel>
               <TabPanel>
                 <h2>Materiel</h2>
@@ -69,15 +68,15 @@ export default function GamePage() {
             <ul className="stats">
               <li>
                 <BsPeopleFill />
-                {game.min_players}-{game.max_players}
+                {game.minPlayers}-{game.maxPlayers}
               </li>
               <li>
                 <GiEmptyHourglass />
-                {game.min_playtime}-{game.max_playtime}
+                {game.minDuration}-{game.maxDuration}
               </li>
               <li>
                 <GiBabyFace />
-                {game.min_age}
+                {game.minAge}
               </li>
               <li>
                 <BsStarFill />

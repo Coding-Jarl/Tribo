@@ -1,34 +1,16 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import useApi from "@services/useApi";
 import Gallery from "@components/Gallery";
 
 export default function Home() {
   const [games, setGames] = useState([]);
-  const [needle, setNeedle] = useState("");
+  const api = useApi();
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/boardgames`)
-      .then(({ data }) => {
-        setGames(data);
-      });
-  }, [needle]);
+    api.get(`/boardgames`).then(({ data }) => {
+      setGames(data);
+    });
+  }, []);
 
-  const hChangeNeedle = (evt) => {
-    setNeedle(evt.target.value);
-  };
-
-  return (
-    <>
-      <aside>
-        <input
-          type="search"
-          name="needle"
-          value={needle}
-          onChange={hChangeNeedle}
-        />
-      </aside>
-      <Gallery elements={games} />
-    </>
-  );
+  return <Gallery elements={games} />;
 }

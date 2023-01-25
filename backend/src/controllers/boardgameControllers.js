@@ -16,11 +16,11 @@ const read = (req, res) => {
   models.boardgame
     .find(req.params.id)
     .then(([rows]) => {
-      if (rows[0] == null) {
+      if (rows[0] === null) {
         res.sendStatus(404);
       } else {
         let game = rows[0];
-        const rawCreators = game.creators.split(",");
+        const rawCreators = game?.creators?.split(",") || [];
         const creators = {
           artists: [],
           publishers: [],

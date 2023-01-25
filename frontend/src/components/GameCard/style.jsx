@@ -15,7 +15,14 @@ export default styled.article`
     width: 125%;
     aspect-ratio: 3/4;
     overflow: hidden;
-    background-color: rgba(235, 235, 235, 1);
+
+    background-color: rgb(92, 65, 22);
+    background: radial-gradient(
+      circle,
+      rgba(92, 65, 22, 1) 0%,
+      rgba(32, 22, 10, 1) 45%,
+      rgba(0, 0, 0, 1) 100%
+    );
     border: 1px solid rgba(200, 200, 200, 0.75);
     border-radius: 0.75rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -55,6 +62,12 @@ export default styled.article`
         align-items: center;
         justify-content: center;
       }
+    }
+    .desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .stats {
       display: flex;

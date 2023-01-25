@@ -13,9 +13,9 @@ class BoardgameManager extends AbstractManager {
           group_concat(distinct concat(role,"#",idCreator) separator ",") as "creators"
       FROM 
         boardgame 
-        inner join boardgames_have_creators on boardgame.id=boardgames_have_creators.idBoardgame
+        left join boardgames_have_creators on boardgame.id=boardgames_have_creators.idBoardgame
       where 
-        id=${id};`,
+        id=?;`,
       [id]
     );
   }

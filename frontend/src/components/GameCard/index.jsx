@@ -39,25 +39,20 @@ export default function GameCard({ data }) {
           </div>
           <h2>{data.name}</h2>
           <ul className="desc">
-            <li>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde
-              eaque illum veniam dolorem quas mollitia aspernatur
-              necessitatibus, nobis impedit temporibus? Sequi doloremque
-              eligendi porro molestiae delectus. Nostrum, iusto hic. Quo.
-            </li>
+            <li>{data.description.replace(/(<([^>]+)>)/gi, "")}</li>
           </ul>
           <ul className="stats">
             <li>
               <BsPeopleFill />
-              {data.min_players}-{data.max_players}
+              {data.minPlayers}-{data.maxPlayers}
             </li>
             <li>
               <GiEmptyHourglass />
-              {data.min_playtime}-{data.max_playtime}
+              {data.minDuration}-{data.maxDuration}
             </li>
             <li>
               <GiBabyFace />
-              {data.min_age}
+              {data.minAge}
             </li>
             <li>
               <BsStarFill />
@@ -77,12 +72,12 @@ GameCard.propTypes = {
   data: propTypes.shape({
     id: propTypes.number,
     name: propTypes.string,
-    description_preview: propTypes.string,
+    description: propTypes.string,
     imgUrl: propTypes.string,
-    min_players: propTypes.number,
-    max_players: propTypes.number,
-    min_playtime: propTypes.number,
-    max_playtime: propTypes.number,
-    min_age: propTypes.number,
+    minPlayers: propTypes.number,
+    maxPlayers: propTypes.number,
+    minDuration: propTypes.number,
+    maxDuration: propTypes.number,
+    minAge: propTypes.number,
   }).isRequired,
 };

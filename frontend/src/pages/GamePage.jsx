@@ -15,7 +15,7 @@ export default function GamePage() {
     api.get(`/boardgames/${id}`).then(({ data }) => {
       setGame(data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <Styled thumbUrl={game?.imgUrl}>

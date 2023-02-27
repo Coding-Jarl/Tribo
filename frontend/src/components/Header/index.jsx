@@ -1,15 +1,38 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { GiHobbitDoor } from "react-icons/gi";
 import useApi from "@services/useApi";
+import FormAuth from "@components/FormAuth";
 import Styled from "./style";
 
 export default function Header() {
   const [results, setResults] = useState([]);
   const [needle, setNeedle] = useState("");
   const api = useApi();
+  const { user } = useSelector((store) => store);
+  const dispatch = useDispatch();
+
+  const hLogout = () => {
+    dispatch({ type: "USER_LOGOUT" });
+    dispatch({ type: "MODAL_CLOSE" });
+  };
 
   const hChange = (evt) => {
     setNeedle(evt.target.value);
+  };
+  const open = () => {
+    let content;
+    if (user.id) {
+      content = (
+        <button type="button" onClick={hLogout}>
+          Log out
+        </button>
+      );
+    } else {
+      content = <FormAuth />;
+    }
+    dispatch({ type: "MODAL_OPEN", payload: content });
   };
 
   useEffect(() => {
@@ -20,7 +43,9 @@ export default function Header() {
 
   return (
     <Styled>
-      <p className="siteTitle">Tribo!</p>
+      <p className="siteTitle">
+        <Link to="/">Tribo!</Link>
+      </p>
       <div className="searchbar">
         <input
           value={needle}
@@ -42,6 +67,18 @@ export default function Header() {
           </ul>
         )}
       </div>
+      <button type="button" onClick={open}>
+        {!user?.id && <GiHobbitDoor color="white" />}
+        {user?.avatarUrl && (
+          <img src={user.avatarUrl} alt={`${user.pseudo}&apos;s avatar`} />
+        )}
+        {user?.id && !user?.avatarUrl && (
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Anonymous_emblem.svg/1200px-Anonymous_emblem.svg.png"
+            alt={`${user.pseudo}&apos;s avatar`}
+          />
+        )}
+      </button>
     </Styled>
   );
 }

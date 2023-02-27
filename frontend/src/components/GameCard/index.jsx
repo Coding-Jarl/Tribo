@@ -17,7 +17,7 @@ export default function GameCard({ data }) {
     setActive(false);
   };
   const hClickDetail = () => {
-    navigate(`/games/${data.id}`);
+    navigate(`/boardgames/${data.id}`);
   };
 
   return (

@@ -1,13 +1,28 @@
 import axios from "axios";
 
-function useApi() {
-  const api = axios.create({
-    baseURL: import.meta.env.VITE_BACKEND_URL,
-  });
+let apiSingleton = null;
 
-  return api;
+function useApi() {
+  if (!apiSingleton) {
+    apiSingleton = axios.create({
+      baseURL: import.meta.env.VITE_BACKEND_URL,
+    });
+  }
+  return apiSingleton;
 }
 
 export default useApi;
 
 // api.get("/boardgames").then(()=>{})
+// Design Pattern: Singleton
+/* Need: Je veux une instance d'axios
+
+1er appel: 
+apiSingleton=null; <- conserver
+instancier axios -> apiSingleton
+return apiSingleton
+
+2nd appel:
+return apiSingleton
+
+ */

@@ -3,11 +3,6 @@ import styled from "styled-components";
 export default styled.header`
   @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
-  .siteTitle {
-    font-family: "Permanent Marker";
-    font-size: 2rem;
-  }
-
   grid-area: topbar;
 
   display: flex;
@@ -17,6 +12,32 @@ export default styled.header`
 
   & > * {
     margin: 1rem;
+  }
+
+  .siteTitle {
+    font-family: "Permanent Marker";
+    font-size: 2rem;
+    position: relative;
+    flex-grow: 1;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  button {
+    border: 0;
+    background-color: transparent;
+    border-radius: 50%;
+  }
+  img {
+    width: 3rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+  svg {
+    font-size: 3rem;
   }
 
   .searchbar {

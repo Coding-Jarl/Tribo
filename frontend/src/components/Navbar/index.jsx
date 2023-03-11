@@ -26,6 +26,13 @@ export default function Navbar() {
             <li>Search</li>
           </ul>
         </li>
+        <li>
+          <h2>Events</h2>
+          <ul>
+            <li>Public</li>
+            <li>My Agenda</li>
+          </ul>
+        </li>
       </ul>
     </Styled>
   );

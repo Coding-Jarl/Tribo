@@ -12,17 +12,3 @@ function useApi() {
 }
 
 export default useApi;
-
-// api.get("/boardgames").then(()=>{})
-// Design Pattern: Singleton
-/* Need: Je veux une instance d'axios
-
-1er appel: 
-apiSingleton=null; <- conserver
-instancier axios -> apiSingleton
-return apiSingleton
-
-2nd appel:
-return apiSingleton
-
- */

@@ -17,6 +17,22 @@ class UserManager extends AbstractManager {
       user.email,
     ]);
   }
+
+  findFriends(userId) {
+    return this.connection.query(
+      `
+    SELECT 
+      user.id, user.pseudo 
+    FROM 
+      user
+      INNER JOIN circles_have_users ON circles_have_users.user_id=user.id
+      INNER JOIN circle ON circle.id=circles_have_users.circle_id
+    WHERE 
+      circle.idOwner=?
+    ;`,
+      [userId]
+    );
+  }
 }
 
 module.exports = UserManager;

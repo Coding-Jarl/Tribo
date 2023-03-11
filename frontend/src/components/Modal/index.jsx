@@ -12,15 +12,15 @@ export default function Modal() {
     evt.stopPropagation();
   };
 
-  useEffect(() => {
-    function closeOnEscape(evt) {
-      if (evt.key === "Escape") close();
-    }
+  function closeOnEscape(evt) {
+    if (evt.key === "Escape") close();
+  }
 
-    document.body.addEventListener("keypress", closeOnEscape);
+  useEffect(() => {
+    document.body.addEventListener("keydown", closeOnEscape);
 
     return () => {
-      document.body.removeEventListener("keypress", closeOnEscape);
+      document.body.removeEventListener("keydown", closeOnEscape);
     };
   }, []);
 
@@ -28,8 +28,11 @@ export default function Modal() {
 
   return (
     <Styled onClick={close}>
-      <div className="modal" onClick={stopPropagation}>
-        {/* {children} */}
+      <div
+        className="modal"
+        onClick={stopPropagation}
+        onKeyDown={closeOnEscape}
+      >
         {modal.content}
       </div>
     </Styled>

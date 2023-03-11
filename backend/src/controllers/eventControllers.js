@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.boardgame
+  models.event
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -12,42 +12,14 @@ const browse = (req, res) => {
     });
 };
 
-const browsePerUser = (req, res) => {
-  const users = req.query?.users?.split(",");
-  models.boardgame
-    .findPerUsers(users)
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const read = (req, res) => {
-  models.boardgame
+  models.event
     .find(req.params.id)
     .then(([rows]) => {
-      if (rows[0] === null) {
+      if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        let game = rows[0];
-        const rawCreators = game?.creators?.split(",") || [];
-        const creators = {
-          artists: [],
-          publishers: [],
-          developers: [],
-          designers: [],
-        };
-        for (let i = 0; i < rawCreators.length; i += 1) {
-          const creatorStats = rawCreators[i].split("#");
-          creators[creatorStats[0]].push(
-            `${creatorStats[1]}#${creatorStats[2]}`
-          );
-        }
-        game = { ...game, creators };
-        res.send(game);
+        res.send(rows[0]);
       }
     })
     .catch((err) => {
@@ -55,15 +27,16 @@ const read = (req, res) => {
       res.sendStatus(500);
     });
 };
+
 const edit = (req, res) => {
-  const boardgame = req.body;
+  const event = req.body;
 
   // TODO validations (length, format...)
 
-  boardgame.id = parseInt(req.params.id, 10);
+  event.id = parseInt(req.params.id, 10);
 
-  models.boardgame
-    .update(boardgame)
+  models.event
+    .update(event)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -78,14 +51,17 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const boardgame = req.body;
+  const rawEvent = req.body;
+  const idOwner = req.user.id;
+
+  const event = { ...rawEvent, idOwner };
 
   // TODO validations (length, format...)
 
-  models.boardgame
-    .insert(boardgame)
+  models.event
+    .insert(event)
     .then(([result]) => {
-      res.location(`/boardgames/${result.insertId}`).sendStatus(201);
+      res.location(`/events/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -94,7 +70,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.boardgame
+  models.event
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -111,7 +87,6 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  browsePerUser,
   read,
   edit,
   add,

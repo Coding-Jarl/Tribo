@@ -20,6 +20,23 @@ class BoardgameManager extends AbstractManager {
     );
   }
 
+  findPerUsers(users) {
+    return this.connection.query(
+      `
+      SELECT 
+        distinct(boardgame.id), boardgame.name
+      FROM
+        boardgame
+          inner join collections_have_boardgames on boardgame.id=collections_have_boardgames.idBoardgame
+          inner join collection on collections_have_boardgames.idCollection=collection.id
+          inner join user on collection.idOwner=user.id
+      WHERE
+        user.id IN (?)
+      ;`,
+      [users]
+    );
+  }
+
   insert(boardgame) {
     return this.connection.query(
       `insert into ${this.table} 

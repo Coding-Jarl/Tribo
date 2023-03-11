@@ -1,9 +1,15 @@
+import useApi from "@services/useApi";
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) {
       return undefined;
     }
+
+    useApi().defaults.headers.authorization = `Bearer ${
+      JSON.parse(serializedState).user.token
+    }`;
     return JSON.parse(serializedState);
   } catch (err) {
     return undefined;

@@ -20,7 +20,6 @@ export default function App() {
         </Routes>
       </Content>
       <Navbar />
-      {/* <Modal children={<p>I iz a better Modal!</p>} /> */}
       <Modal />
       <ToastContainer />
     </Styled>

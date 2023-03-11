@@ -24,7 +24,10 @@ export default function FormAuth() {
     api
       .post("/auth/login", formAuthData)
       .then(({ data }) => {
-        dispatch({ type: "USER_LOGIN", payload: data.user });
+        dispatch({
+          type: "USER_LOGIN",
+          payload: { ...data.user, token: data.token },
+        });
         dispatch({ type: "MODAL_CLOSE" });
         api.defaults.headers.authorization = `Bearer ${data.token}`;
         // Stocker le token dans un cookie

@@ -8,8 +8,7 @@ import Styled from "./style";
 export default function Header() {
   const [results, setResults] = useState([]);
   const api = useApi();
-  const { user } = useSelector((store) => store);
-  const { needle } = useSelector((store) => store);
+  const { user, needle } = useSelector((store) => store);
   const dispatch = useDispatch();
 
   const hChange = (evt) => {

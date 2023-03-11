@@ -1,16 +1,11 @@
-const initialState = {
-  needle: "",
-};
+const initialState = "";
 
 // eslint-disable-next-line import/prefer-default-export
-export const needleReducer = (state = initialState, action) => {
+export default function needleReducer(state = initialState, action) {
   switch (action.type) {
     case "NEEDLE_UPDATE":
-      return {
-        ...state,
-        needle: action.payload,
-      };
+      return action.payload;
     default:
       return state;
   }
-};
+}

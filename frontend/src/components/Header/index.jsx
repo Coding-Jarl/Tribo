@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GiHobbitDoor } from "react-icons/gi";
 import useApi from "@services/useApi";
-import FormAuth from "@components/FormAuth";
+import FormAuth from "@forms/Auth";
 import Styled from "./style";
 
 export default function Header() {

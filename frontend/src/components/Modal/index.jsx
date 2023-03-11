@@ -41,7 +41,12 @@ export default function Modal() {
   if (!modal.isOpen) return null;
   return (
     <Styled onClick={close}>
-      <div className="modal" onClick={stopPropagation} onKeyDown={hKeyDown}>
+      <div
+        className="modal"
+        onClick={stopPropagation}
+        onKeyDown={hKeyDown}
+        role="presentation"
+      >
         {content}
       </div>
     </Styled>

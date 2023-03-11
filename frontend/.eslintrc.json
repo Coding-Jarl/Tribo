@@ -41,6 +41,7 @@
         "alias": {
           "@assets": "./src/assets",
           "@components": "./src/components",
+          "@forms": "./src/forms",
           "@pages": "./src/pages",
           "@services": "./src/services"
         },

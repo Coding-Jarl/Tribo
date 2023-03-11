@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GiHobbitDoor } from "react-icons/gi";
 import useApi from "@services/useApi";
-import FormAuth from "@forms/Auth";
 import Styled from "./style";
 
 export default function Header() {
@@ -13,11 +12,6 @@ export default function Header() {
   const { needle } = useSelector((store) => store);
   const dispatch = useDispatch();
 
-  const hLogout = () => {
-    dispatch({ type: "USER_LOGOUT" });
-    dispatch({ type: "MODAL_CLOSE" });
-  };
-
   const hChange = (evt) => {
     dispatch({
       type: "NEEDLE_UPDATE",
@@ -26,17 +20,7 @@ export default function Header() {
   };
 
   const open = () => {
-    let content;
-    if (user.id) {
-      content = (
-        <button type="button" onClick={hLogout}>
-          Log out
-        </button>
-      );
-    } else {
-      content = <FormAuth />;
-    }
-    dispatch({ type: "MODAL_OPEN", payload: content });
+    dispatch({ type: "MODAL_OPEN", payload: "auth" });
   };
 
   useEffect(() => {

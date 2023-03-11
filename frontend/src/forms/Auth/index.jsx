@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useApi from "@services/useApi";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 export default function FormAuth() {
@@ -8,8 +8,9 @@ export default function FormAuth() {
     email: "",
     password: "",
   });
-  const api = useApi();
+  const { user } = useSelector((store) => store);
   const dispatch = useDispatch();
+  const api = useApi();
 
   const hChange = (evt) => {
     setFormAuthData({
@@ -19,7 +20,7 @@ export default function FormAuth() {
     });
   };
 
-  const hSubmit = (evt) => {
+  const hLogin = (evt) => {
     evt.preventDefault();
     api
       .post("/auth/login", formAuthData)
@@ -38,21 +39,33 @@ export default function FormAuth() {
       });
   };
 
+  const hLogout = () => {
+    dispatch({ type: "USER_LOGOUT" });
+    dispatch({ type: "MODAL_CLOSE" });
+  };
+
+  if (!user.id) {
+    return (
+      <form onSubmit={hLogin}>
+        <input
+          name="email"
+          type="email"
+          value={formAuthData.email}
+          onChange={hChange}
+        />
+        <input
+          name="password"
+          type="password"
+          value={formAuthData.password}
+          onChange={hChange}
+        />
+        <input type="submit" value="Log in" />
+      </form>
+    );
+  }
   return (
-    <form onSubmit={hSubmit}>
-      <input
-        name="email"
-        type="email"
-        value={formAuthData.email}
-        onChange={hChange}
-      />
-      <input
-        name="password"
-        type="password"
-        value={formAuthData.password}
-        onChange={hChange}
-      />
-      <input type="submit" value="Log in" />
-    </form>
+    <button type="button" onClick={hLogout}>
+      Log out
+    </button>
   );
 }

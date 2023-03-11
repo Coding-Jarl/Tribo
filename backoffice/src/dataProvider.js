@@ -1,5 +1,5 @@
-import { fetchUtils } from "react-admin";
-import { stringify } from "query-string";
+import { fetchUtils } from 'react-admin';
+import { stringify } from 'query-string';
 
 const apiUrl = `${import.meta.env.VITE_BACKEND_URL}`;
 const httpClient = fetchUtils.fetchJson;
@@ -51,13 +51,13 @@ export const dataProvider = {
 
     return httpClient(url).then(({ headers, json }) => ({
       data: json,
-      total: parseInt(headers.get("content-range").split("/").pop(), 10),
+      total: parseInt(headers.get('content-range').split('/').pop(), 10),
     }));
   },
 
   update: (resource, params) =>
     httpClient(`${apiUrl}/${resource}/${params.id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json })),
 
@@ -66,14 +66,14 @@ export const dataProvider = {
       filter: JSON.stringify({ id: params.ids }),
     };
     return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json }));
   },
 
   create: (resource, params) =>
     httpClient(`${apiUrl}/${resource}`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({
       data: { ...params.data, id: json.id },
@@ -81,7 +81,7 @@ export const dataProvider = {
 
   delete: (resource, params) =>
     httpClient(`${apiUrl}/${resource}/${params.id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(({ json }) => ({ data: json })),
 
   deleteMany: (resource, params) => {
@@ -89,7 +89,7 @@ export const dataProvider = {
       filter: JSON.stringify({ id: params.ids }),
     };
     return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(({ json }) => ({ data: json }));
   },
 };

@@ -8,9 +8,9 @@ import Styled from "./style";
 
 export default function Header() {
   const [results, setResults] = useState([]);
-  const [needle, setNeedle] = useState("");
   const api = useApi();
   const { user } = useSelector((store) => store);
+  const { needle } = useSelector((store) => store);
   const dispatch = useDispatch();
 
   const hLogout = () => {
@@ -19,8 +19,12 @@ export default function Header() {
   };
 
   const hChange = (evt) => {
-    setNeedle(evt.target.value);
+    dispatch({
+      type: "NEEDLE_UPDATE",
+      payload: evt.target.value,
+    });
   };
+
   const open = () => {
     let content;
     if (user.id) {

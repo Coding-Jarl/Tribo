@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 // eslint-disable-next-line import/no-unresolved
 import "swiper/css";
 import "./style.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Select from "react-select";
 import useApi from "@services/useApi";
 
@@ -68,7 +68,7 @@ export default function SandBox() {
 
   const fetchGames = () => {
     const usersId = selectedFriends.map((user) => user.value).join(",");
-    api.get("/boardgamesPerUser?users=" + usersId).then(({ data }) => {
+    api.get(`/boardgamesPerUser?users=${usersId}`).then(({ data }) => {
       setAvailableGames(
         data.map((game) => {
           return {
